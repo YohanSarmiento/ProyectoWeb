@@ -17,8 +17,15 @@ app.use(express.urlencoded({ extended: false }));
 
 
 // Routes
-
+app.use(require('./routes/entries.routes'));
 // 404 handler
 
+app.use((req, res) => {
+  res.status(404).render('404');
+
+});
 
 //starting la app
+app.listen(app.get('port'), () => {
+  console.log('server on port:', app.get('port'));
+});
